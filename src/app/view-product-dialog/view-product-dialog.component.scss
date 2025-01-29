@@ -1,0 +1,130 @@
+/* Dialog Title Styling */
+.dialog-title {
+  font-size: 2rem; /* Increased size for more prominence */
+  font-weight: 600; /* Semi-bold for a modern look */
+  color: #2c3e50; /* Darker shade for elegance */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Dialog Content Styling */
+.dialog-content {
+  font-size: 1.2rem; /* Slightly larger font size for readability */
+  color: #7f8c8d; /* Light gray for a soft look */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing */
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  word-wrap: break-word;
+}
+
+/* Dialog Actions Styling */
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+/* Close Button Styling */
+/* Close Button Styling */
+/* Close Button Styling */
+.close-btn {
+  background-color: transparent; /* No background for minimal look */
+  color: #3498db; /* Soft blue color for text */
+  font-weight: 500; /* Slightly lighter font weight */
+  padding: 12px 24px; /* Reduced padding for a more compact button */
+  border: 2px solid #3498db; /* Border with matching text color */
+  border-radius: 30px; /* Rounded corners for a soft, minimal look */
+  font-size: 1.1rem; /* Slightly larger font size */
+  transition: all 0.3s ease;
+  text-transform: uppercase; /* Uppercase text for clean, modern look */
+}
+
+.close-btn:hover {
+  background-color: #3498db; /* Soft blue background on hover */
+  color: white; /* White text on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.close-btn:focus {
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); /* Subtle focus effect */
+}
+
+.close-btn:active {
+  transform: translateY(1px); /* Button pressed effect */
+}
+
+
+
+/* Set Dialog Size */
+::ng-deep .mat-dialog-container {
+  max-width: 80vw;
+  min-width: 400px; /* Increased minimum width */
+  border-radius: 12px;
+  padding: 30px;
+  background: #f7f7f7; /* Soft light background */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Product Info Layout */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* More spacing between items */
+}
+
+/* Product Detail Item Styling */
+.product-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* More space between icon and text */
+  font-size: 1.2rem; /* Slightly larger text */
+  color: #7f8c8d;
+}
+
+.product-detail-item mat-icon {
+  color: #3498db; /* Soft blue for icons */
+  font-size: 1.6rem; /* Larger icon size for better visibility */
+}
+
+/* Icon and Text Styling */
+.product-detail-item span {
+  font-weight: 500; /* Slightly bold text for emphasis */
+}
+
+/* Close Button Styling */
+button.close-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button.close-btn:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 600px) {
+  ::ng-deep .mat-dialog-container {
+      width: 90vw;
+  }
+
+  .dialog-card {
+      width: 100%;
+  }
+
+  .product-info {
+      gap: 15px; /* Reduced gap for smaller screens */
+  }
+
+  .product-detail-item {
+      font-size: 1.1rem; /* Slightly smaller text for smaller screens */
+  }
+}

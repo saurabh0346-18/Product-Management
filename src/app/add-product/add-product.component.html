@@ -1,0 +1,149 @@
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Add New Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    
+    <!-- Product Name -->
+    <div class="space-y-2">
+      <label for="name" class="text-sm font-medium text-gray-700">Product Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        placeholder="Enter product name"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      />
+      <div *ngIf="name?.touched && name?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="name?.hasError('required')">Product name is required.</div>
+        <div *ngIf="name?.hasError('minlength')">Product name must be at least 3 characters long.</div>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="space-y-2">
+      <label for="price" class="text-sm font-medium text-gray-700">Price</label>
+      <input
+        type="number"
+        id="price"
+        formControlName="price"
+        placeholder="Enter product price"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      />
+      <div *ngIf="price?.touched && price?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="price?.hasError('required')">Price is required.</div>
+        <div *ngIf="price?.hasError('min')">Price must be greater than 0.</div>
+      </div>
+    </div>
+
+    <!-- Category -->
+    <div class="space-y-2">
+      <label for="category" class="text-sm font-medium text-gray-700">Category</label>
+      <select
+        id="category"
+        formControlName="category"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      >
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <div *ngIf="category?.touched && category?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="category?.hasError('required')">Category is required.</div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="space-y-2">
+      <label for="description" class="text-sm font-medium text-gray-700">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        (input)="onDescriptionChange($event)"
+        placeholder="Enter product description (max 150 characters)"
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      ></textarea>
+      <small class="text-gray-500">{{ descriptionLength }} / 150 characters</small>
+      <div *ngIf="description?.touched && description?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="description?.hasError('maxlength')">Description cannot exceed 150 characters.</div>
+      </div>
+    </div>
+
+    <!-- Manufacture Date -->
+    <div class="space-y-2">
+      <label for="manufactureDate" class="text-sm font-medium text-gray-700">Manufacture Date</label>
+      <input
+        type="date"
+        id="manufactureDate"
+        formControlName="manufactureDate"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      />
+      <div *ngIf="manufactureDate?.touched && manufactureDate?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="manufactureDate?.hasError('required')">Manufacture date is required.</div>
+      </div>
+    </div>
+
+    <!-- Product Image -->
+    <div class="space-y-2">
+      <label for="image" class="text-sm font-medium text-gray-700">Product Image</label>
+      <input
+        type="file"
+        id="image"
+        (change)="onImageSelected($event)"
+        class="w-full text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      />
+      <div *ngIf="image?.touched && image?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="image?.hasError('required')">Product image is required.</div>
+      </div>
+    </div>
+
+    <!-- Discount Available -->
+    <div class="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        formControlName="discountAvailable"
+        class="h-5 w-5 text-indigo-500 border-gray-300 rounded focus:ring-indigo-500"
+      />
+      <label for="discountAvailable" class="text-sm text-gray-700">Discount Available</label>
+    </div>
+
+    <!-- Stock Status -->
+    <div class="space-y-2">
+      <label for="stockStatus" class="text-sm font-medium text-gray-700">Stock Status</label>
+      <select
+        id="stockStatus"
+        formControlName="stockStatus"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+      >
+        <option value="In Stock">In Stock</option>
+        <option value="Out of Stock">Out of Stock</option>
+      </select>
+      <div *ngIf="stockStatus?.touched && stockStatus?.invalid" class="text-red-500 text-sm mt-1">
+        <div *ngIf="stockStatus?.hasError('required')">Stock status is required.</div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-6">
+      <button
+        type="submit"
+        [disabled]="productForm.invalid"
+        class="w-full py-3 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200"
+      >
+        Add Product
+      </button>
+    </div>
+  </form>
+
+  <!-- Navigate to CRUD component -->
+  <div class="mt-6 text-center">
+    <button
+      (click)="navigateToProductList()"
+      class="text-indigo-600 hover:text-indigo-800 focus:outline-none"
+    >
+      <span class="inline-block mr-2">←</span> Back to Product List
+    </button>
+  </div>
+</div>

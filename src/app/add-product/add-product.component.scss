@@ -1,0 +1,133 @@
+// .product-form-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//     background: linear-gradient(135deg, #f0f4f8, #e0e8ed); /* Soft neutral gradient */
+//     padding: 20px;
+//   }
+  
+//   .product-form-card {
+//     width: 100%;
+//     max-width: 600px;
+//     border-radius: 12px;
+//     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+//     background: #ffffff; /* White background for a clean look */
+//     padding: 30px;
+//     overflow: hidden;
+//     animation: fadeIn 1s ease-in-out;
+//   }
+  
+//   .title {
+//     font-size: 28px;
+//     font-weight: 600;
+//     color: #4a90e2; /* Muted blue for a calming, professional look */
+//     text-align: center;
+//     margin-bottom: 20px;
+//   }
+  
+//   .form-field {
+//     width: 100%;
+//     margin-bottom: 20px;
+//   }
+  
+//   mat-form-field {
+//     .mat-form-field-infix {
+//       background-color: #f9f9f9; /* Light grey background for form fields */
+//       border-radius: 8px;
+//     }
+  
+//     .mat-label {
+//       color: #4a90e2; /* Muted blue for consistency */
+//     }
+  
+//     .mat-input-element {
+//       font-size: 16px;
+//       color: #333;
+//     }
+  
+//     .mat-error {
+//       color: #e74c3c; /* Red for error messages */
+//     }
+//   }
+  
+//   mat-radio-button {
+//     color: #4a90e2; /* Muted blue */
+//   }
+  
+//   mat-checkbox {
+//     color: #4a90e2; /* Muted blue */
+//   }
+  
+//   mat-button {
+//     background-color: #4a90e2; /* Muted blue */
+//     color: white;
+//     border-radius: 8px;
+//     padding: 12px 24px;
+//     transition: background-color 0.3s ease;
+  
+//     &:hover {
+//       background-color: #357ab7; /* Darker shade of blue for hover effect */
+//     }
+//   }
+  
+//   .form-actions {
+//     display: flex;
+//     justify-content: center;
+//     margin-top: 20px;
+//   }
+  
+//   mat-hint {
+//     color: #4a90e2; /* Muted blue */
+//     font-size: 14px;
+//   }
+  
+//   /* Animation for fade-in effect */
+//   @keyframes fadeIn {
+//     0% {
+//       opacity: 0;
+//       transform: translateY(-20px);
+//     }
+//     100% {
+//       opacity: 1;
+//       transform: translateY(0);
+//     }
+//   }
+//   .product-form-container {
+//     position: relative;
+//   }
+  
+//   .navigate-button {
+//     position: absolute;
+//     top: 10px; /* Adjust as needed */
+//     left: 10px; /* Adjust as needed */
+//     background-color: #f0f0f0; /* Light color */
+//     color: #333; /* Darker text for contrast */
+//     font-weight: bold;
+//     width: 60px; /* Set width and height to make it circular */
+//     height: 60px;
+//     border-radius: 50%; /* Makes the button round */
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+//     padding: 0;
+  
+//     mat-icon {
+//       font-size: 24px; /* Adjust icon size */
+//     }
+  
+//     &:hover {
+//       background-color: #e0e0e0; /* Slightly darker on hover */
+//       transform: scale(1.1); /* Slight scale effect on hover */
+//       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+//     }
+  
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+  
+ 
+  

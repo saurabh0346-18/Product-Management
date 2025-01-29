@@ -1,0 +1,31 @@
+<div class="home-container">
+  <div class="welcome-section">
+    <h2 class="welcome-message">Welcome, {{ username }}!</h2>
+    <p class="subtitle">We’re thrilled to have you with us. Let’s get started! 🚀</p>
+  </div>
+
+  <div class="actions-section">
+    <!-- Logout Button -->
+    <button mat-raised-button color="primary" class="logout-button" (click)="logout()" aria-label="Logout">
+      <mat-icon aria-hidden="true">logout</mat-icon>
+      LOGOUT
+    </button>
+
+    <!-- Navigate to CRUD Button -->
+    <button mat-raised-button color="accent" class="crud-button" (click)="goToCrud()" aria-label="Go to CRUD">
+      <mat-icon aria-hidden="true">apps</mat-icon>
+      Go To PRODUCT-LISTING
+    </button>
+
+
+    <!-- Add Product Button -->
+<button mat-raised-button color="accent" class="crud-button" (click)="goToProduct()" aria-label="Go to CRUD">
+  <mat-icon aria-hidden="true">store</mat-icon>
+  Go to ADD-PRODUCT
+</button>
+
+    
+  </div>
+
+
+</div>

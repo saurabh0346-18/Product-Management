@@ -1,0 +1,75 @@
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ data.mode === 'edit' ? 'Edit Product' : 'Add Product' }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <!-- Product Name -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Product Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <!-- Product Price -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Price</mat-label>
+          <input matInput type="number" formControlName="price" />
+        </mat-form-field>
+
+        <!-- Product Category -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Product Description -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" (input)="onDescriptionChange($event)"></textarea>
+          <div class="flex justify-end text-sm text-gray-500">
+            {{ descriptionLength }}/150
+          </div>
+        </mat-form-field>
+
+        <!-- Product Manufacture Date -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Manufacture Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="manufactureDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Product Discount Available -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Discount Available</mat-label>
+          <mat-select formControlName="discountAvailable">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Product Stock Status -->
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Stock Status</mat-label>
+          <mat-select formControlName="stockStatus">
+            <mat-option value="In Stock">In Stock</mat-option>
+            <mat-option value="Out of Stock">Out of Stock</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between items-center mt-6">
+          <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+            {{ data.mode === 'edit' ? 'Save Changes' : 'Add Product' }}
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="onNoClick()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>

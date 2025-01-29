@@ -1,0 +1,49 @@
+<mat-card-title class="dialog-title">Product Details</mat-card-title>
+<mat-dialog-content [@fadeIn] class="dialog-content">
+  <mat-card class="dialog-card">
+    <mat-card-header class="dialog-header">
+    </mat-card-header>
+    <mat-card-content class="dialog-content">
+      <div class="product-info">
+        <div class="image-container">
+          <img *ngIf="data.product.imageUrl" [src]="data.product.imageUrl" alt="Product Image" class="product-image"/>
+        </div>
+        <div class="product-details">
+          <div class="product-detail-item">
+            <mat-icon>label</mat-icon>
+            <span><strong>Name:</strong> {{ data.product.name }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>attach_money</mat-icon>
+            <span><strong>Price:</strong> {{ data.product.price | currency: 'INR' }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>category</mat-icon>
+            <span><strong>Category:</strong> {{ data.product.category }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>check_circle</mat-icon>
+            <span><strong>Stock Status:</strong> {{ data.product.stockStatus }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>local_offer</mat-icon>
+            <span><strong>Discount Available:</strong> {{ data.product.discountAvailable ? 'Yes' : 'No' }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>calendar_today</mat-icon>
+            <span><strong>Manufacture Date:</strong> {{ data.product.manufactureDate | date }}</span>
+          </div>
+          <div class="product-detail-item">
+            <mat-icon>description</mat-icon>
+            <span><strong>Description:</strong> {{ data.product.description | slice:0:30 }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="dialog-actions">
+      <button mat-raised-button color="primary" (click)="closeDialog()" class="close-btn">
+        Close
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-dialog-content>

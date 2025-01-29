@@ -1,0 +1,86 @@
+<div class="auth-container" @fadeIn>
+  <div class="auth-card" @bounce>
+    <!-- Header Section -->
+    <div class="auth-header">
+      <i class="fas fa-sign-in-alt auth-icon"></i>
+      <h2 class="auth-title">👋 Welcome Back!</h2>
+      <p class="auth-subtitle">Sign in to continue 🚀</p>
+    </div>
+
+    <!-- Form Section -->
+    <form (ngSubmit)="onSignIn()" class="auth-form">
+      <!-- Email Address -->
+      <div class="form-group">
+        <label class="input-label">
+          <i class="fas fa-envelope input-icon"></i>
+          Email Address
+        </label>
+        <input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          required 
+          [class.invalid]="!email && emailTouched"
+          (blur)="emailTouched = true"
+          placeholder="Enter your email" />
+        <div class="validation-message" *ngIf="!email && emailTouched">
+          <i class="fas fa-exclamation-circle error-icon"></i>
+          Email is required
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label class="input-label">
+          <i class="fas fa-lock input-icon"></i>
+          Password
+        </label>
+      
+        <!-- Password Input with visibility toggle inside the box -->
+        <div class="password-input">
+          <input 
+            [type]="hidePassword ? 'password' : 'text'" 
+            [(ngModel)]="password" 
+            name="password" 
+            required 
+            [class.invalid]="!password && passwordTouched"
+            (blur)="passwordTouched = true"
+            placeholder="Enter your password" />
+          <i class="eye-icon" (click)="togglePasswordVisibility()">
+            {{ hidePassword ? '👁️' : '🙈' }}
+          </i>
+        </div>
+        <div class="validation-message" *ngIf="!password && passwordTouched">
+          <i class="fas fa-exclamation-circle error-icon"></i>
+          Password is required
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="submit-btn" 
+        [disabled]="!email || !password || loading">
+        <span *ngIf="!loading">✨ Sign In ✨</span>
+        <span *ngIf="loading">Signing In...</span>
+        <i class="fas" 
+           [class.fa-spinner]="loading" 
+           [class.fa-pulse]="loading" 
+           [class.fa-arrow-right]="!loading"></i>
+      </button>
+
+      <!-- API Error Message -->
+      <div class="api-error" *ngIf="apiError">
+        <i class="fas fa-exclamation-triangle"></i>
+        {{ apiError }}
+      </div>
+
+      <!-- Footer Section -->
+      <div class="auth-footer">
+        <p>Don't have an account? 
+          <a routerLink="/sign-up" class="auth-link">Sign Up 🌟</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

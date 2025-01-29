@@ -1,0 +1,86 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// Professional UI Enhancements
+// styles.scss
+// Add these to your existing styles
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  
+    input {
+      transition: all 0.3s ease;
+      
+      &.invalid {
+        border-color: #ff4444 !important;
+        animation: shake 0.5s ease-in-out;
+      }
+    }
+  }
+  
+  .validation-error {
+    color: #ff4444;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .auth-card {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

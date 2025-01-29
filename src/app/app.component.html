@@ -1,0 +1,31 @@
+<!-- app.component.html -->
+<nav class="navbar">
+  <div class="nav-content">
+    <a routerLink="/home" class="logo">
+    </a>
+    <div class="nav-links">
+      <!-- Links for authenticated users -->
+      <a *ngIf="isAuthenticated" routerLink="/home" class="nav-link">
+     
+      </a>
+      <a *ngIf="isAuthenticated" routerLink="/crud" class="nav-link">
+     
+      </a>
+      <a *ngIf="isAuthenticated" (click)="logout()" class="nav-link danger">
+      </a>
+
+      <!-- Links for unauthenticated users -->
+      <a *ngIf="!isAuthenticated" routerLink="/sign-in" class="nav-link">
+      </a>
+      <a *ngIf="!isAuthenticated" routerLink="/sign-up" class="nav-link highlight">
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Route animations and outlet -->
+<div [@routeAnimations]>
+  <router-outlet></router-outlet>
+</div>
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+

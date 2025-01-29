@@ -1,0 +1,75 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <div class="auth-header">
+      <div class="icon-container">
+        <mat-icon class="auth-icon">person_add</mat-icon> <!-- Icon remains the same -->
+      </div>
+      <h2 class="auth-title">Create Your Account</h2>
+      <p class="auth-subtitle">Join us today and explore endless possibilities 🚀</p>
+    </div>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Full Name -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="signUpForm.get('name')?.hasError('minlength')">Minimum 3 characters required</mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email Address</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="signUpForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <mat-icon matSuffix class="eye-icon" (click)="togglePasswordVisibility()">
+          {{ hidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('passwordStrength')">
+          {{ signUpForm.get('password')?.errors?.['passwordStrength'] }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Confirm Password -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" />
+        <mat-icon matSuffix class="eye-icon" (click)="toggleConfirmPasswordVisibility()">
+          {{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="signUpForm.errors?.['match']">Passwords do not match</mat-error>
+      </mat-form-field>
+
+      <!-- Password Strength Indicator -->
+      <div class="password-strength-container">
+        <p class="password-strength-text">
+          Password Strength: 
+          <span [ngClass]="getPasswordStrengthClass()">{{ getPasswordStrengthText() }}</span>
+        </p>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid || loading">
+          <span *ngIf="!loading">Sign Up</span>
+          <span *ngIf="loading">Creating Account...</span>
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>Already have an account? 
+          <a routerLink="/sign-in" class="auth-link">Sign In</a>
+        </p>
+      </div>
+    </form>
+  </mat-card>
+</div>

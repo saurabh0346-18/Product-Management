@@ -1,0 +1,17 @@
+<div class="dialog-container" [@fadeInAnimation]>
+    <mat-card class="confirm-dialog-card">
+      <mat-card-header>
+        <mat-card-title class="dialog-title">Confirm Action</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content class="dialog-content">
+        <p>{{ data?.message }}</p>
+      </mat-card-content>
+  
+      <mat-card-actions class="dialog-actions">
+        <button mat-button [@buttonHover] (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" [@buttonHover] (click)="onConfirm()">Confirm</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
